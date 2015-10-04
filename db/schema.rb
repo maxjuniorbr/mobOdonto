@@ -52,15 +52,15 @@ ActiveRecord::Schema.define(version: 20151004163355) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string   "patient",            limit: 100
+    t.string   "patient",               limit: 100
     t.date     "birth"
-    t.string   "nationality",        limit: 100
+    t.string   "nationality",           limit: 100
     t.integer  "marital_status_id"
-    t.integer  "indication_patient"
+    t.integer  "indication_patient_id"
     t.integer  "health_plan_id"
-    t.string   "email",              limit: 100
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.string   "email",                 limit: 100
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "patients", ["health_plan_id"], name: "index_patients_on_health_plan_id", using: :btree

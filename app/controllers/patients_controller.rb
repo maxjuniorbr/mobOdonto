@@ -28,7 +28,7 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.save
-        format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
+        format.html { redirect_to patients_path, notice: t(:created_patient) }
         format.json { render :show, status: :created, location: @patient }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PatientsController < ApplicationController
   def update
     respond_to do |format|
       if @patient.update(patient_params)
-        format.html { redirect_to @patient, notice: 'Patient was successfully updated.' }
+        format.html { redirect_to patients_path, notice: t(:updated_patient) }
         format.json { render :show, status: :ok, location: @patient }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:patient, :birth, :nationality, :marital_status_id, :indication_patient, :health_plan_id, :email)
+      params.require(:patient).permit(:patient, :birth, :nationality, :marital_status_id, :indication_patient_id, :health_plan_id, :email)
     end
 end

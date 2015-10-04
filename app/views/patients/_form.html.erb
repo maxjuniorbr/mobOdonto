@@ -12,11 +12,11 @@
   <% end %>
   <div class="row dotted">
     <div class="col-md-6">
-      Dados do Paciente
+      <%= t(:patient_details) %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-sm-2">
       <%= f.label :patient %><br>
     </div>
     <div class="col-md-4">
@@ -24,15 +24,15 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-sm-2">
       <%= f.label :birth %><br>
     </div>
     <div class="col-md-4">
-      <%= f.text_field :birth, class: "form-control" %>
+      <%= f.text_field :birth, value: date_format(@patient.try(:birth)), class: "form-control", alt: :date %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-sm-2">
       <%= f.label :nationality %><br>
     </div>
     <div class="col-md-4">
@@ -40,23 +40,23 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-sm-2">
       <%= f.label :marital_status_id %><br>
     </div>
     <div class="col-md-4">
-      <%= f.select :marital_status_id, ["Solteiro", "Casado", "Separado", "Viúvo", "Outros"], { include_blank: true }, { class: "form-control" }%>
+      <%= f.select :marital_status_id, [["Solteiro", 0], ["Casado", 1], ["Separado", 2], ["Viúvo", 3], ["Outros", 4]], { include_blank: true }, { class: "form-control" }%>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2">
-      <%= f.label :indication_patient %><br>
+    <div class="col-sm-2">
+      <%= f.label :indication_patient_id %><br>
     </div>
     <div class="col-md-4">
-      <%= f.text_field :indication_patient, class: "form-control" %>
+      <%= f.text_field :indication_patient_id, class: "form-control" %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-sm-2">
       <%= f.label :health_plan_id %><br>
     </div>
     <div class="col-md-4">
@@ -64,7 +64,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-sm-2">
       <%= f.label :email %><br>
     </div>
     <div class="col-md-4">
@@ -73,15 +73,21 @@
   </div>
   <div class="row dotted">
     <div class="col-md-8">
-      Dados de Contato
+      <%= t(:patient_contact) %>
     </div>
     <div class="col-md-4 text-right">
-      <%= link_to 'Novo Contato', patients_path %>
+      <%= link_to t(:new_contact), patients_path %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12 text-right">
-      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit class: "btn btn-primary" %> <%= link_to t(:back), patients_path, class: "btn btn-default" %>
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('input[type="text"]').setMask();
+  });
+</script>

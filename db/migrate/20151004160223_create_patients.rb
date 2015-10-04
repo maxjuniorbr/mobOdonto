@@ -5,7 +5,7 @@ class CreatePatients < ActiveRecord::Migration
       t.date :birth
       t.string :nationality, :limit => 100
       t.integer :marital_status_id
-      t.integer :indication_patient
+      t.integer :indication_patient_id
       t.references :health_plan, index: true, foreign_key: true
       t.string :email, :limit => 100
 
