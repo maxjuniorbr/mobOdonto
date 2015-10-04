@@ -20,6 +20,9 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
+  host: localhost
+  username: postgres
+  password: admin
 
 development:
   <<: *default
@@ -81,5 +84,5 @@ test:
 production:
   <<: *default
   database: mobOdonto_production
-  username: mobOdonto
-  password: <%= ENV['MOBODONTO_DATABASE_PASSWORD'] %>
+# username: mobOdonto
+# password: <%= ENV['MOBODONTO_DATABASE_PASSWORD'] %>
