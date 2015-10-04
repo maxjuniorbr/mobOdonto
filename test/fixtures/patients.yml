@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient: MyString
+  birth: 2015-10-04
+  nationality: MyString
+  marital_status_id: 1
+  indication_patient: 1
+  health_plan_id: 
+  email: MyString
+
+two:
+  patient: MyString
+  birth: 2015-10-04
+  nationality: MyString
+  marital_status_id: 1
+  indication_patient: 1
+  health_plan_id: 
+  email: MyString
