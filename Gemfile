@@ -45,3 +45,8 @@ group :development do
   gem 'spring'
 end
 
+# Bootstrap
+gem 'bootstrap-sass'
+
+# Automatically adds the proper vendor prefixes to your CSS code when it is compiled
+gem 'autoprefixer-rails'
