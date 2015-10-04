@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @health_plan.name %>
+</p>
+
+<%= link_to 'Edit', edit_health_plan_path(@health_plan) %> |
+<%= link_to 'Back', health_plans_path %>
