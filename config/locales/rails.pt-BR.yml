@@ -1,26 +1,35 @@
 ---
 pt-BR:
-  back: Voltar
+  # Patient
+  patient_details: Detalhes do Paciente  
   patient: Paciente
   birth: Data de Nascimento
   nationality: Nacionalidade
   marital_status_id: Estado Civil
   indication_patient_id: Indicado Por
   health_plan_id: Plano de Saúde
-  email: E-Mail
+  email: E-Mail  
+  patient_contact: Contatos do Paciente
   new_patient: Novo Paciente
-  patient_details: Dados do Paciente
-  patient_contact: Dados do Contato
+  # General
   new_contact: Novo Contato
-  patient_list: Lista de Pacientes
+  back: Voltar
   edit: Editar
-  delete: Apagar
-  created_patient: Paciente criado com sucesso
-  updated_patient: Paciente atualizado com sucesso
-  confirm_delete: "Deseja apagar o registro?"
+  delete: Deletar
+  delete_confirm: Confirma a remoção do registro?
+  register_created: Registro criado com sucesso.
+  register_updated: Registro atualizado com sucesso.
+  register_error: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+  # Models
   activerecord:
     models:
-      patient: Paciente  
+      patient: Paciente
+    attributes:
+      patient: 
+        patient: Paciente
+        birth: Data de Nascimento
+        marital_status_id: Estado Civil
+        email: E-Mail  
   date:
     abbr_day_names:
     - Dom
@@ -117,7 +126,7 @@ pt-BR:
       month: Mês
       second: Segundo
       year: Ano
-  errors:
+  errors:    
     format: "%{attribute} %{message}"
     messages:
       accepted: deve ser aceito
@@ -152,15 +161,6 @@ pt-BR:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros.'
   helpers:
-    label:
-      patient:
-        patient: Paciente
-        birth: Data de Nascimento
-        nationality: Nacionalidade
-        marital_status_id: Estado Civil
-        indication_patient_id: Indicado Por
-        health_plan_id: Plano de Saúde
-        email: E-Mail
     select:
       prompt: Por favor selecione
     submit:
@@ -223,7 +223,7 @@ pt-BR:
     precision:
       format:
         delimiter: "."
-  supPort:
+  support:
     array:
       last_word_connector: " e "
       two_words_connector: " e "

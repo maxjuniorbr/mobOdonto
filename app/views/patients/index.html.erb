@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
-      <%= t(:patient_list) %>
+      <%= t(:patient).pluralize %>
     </h3>
   </div>
   <div class="panel-body">
@@ -39,7 +39,7 @@
           <td><%= patient.health_plan.name %></td>
           <td><%= patient.email %></td>
           <td><%= link_to t(:edit), edit_patient_path(patient) %></td>
-          <td><%= link_to t(:delete), patient, method: :delete, data: { confirm: t(:confirm_delete) } %></td>
+          <td><%= link_to t(:delete), patient, method: :delete, data: { confirm: t(:delete_confirm) } %></td>
         </tr>
       <% end %>
     </tbody>

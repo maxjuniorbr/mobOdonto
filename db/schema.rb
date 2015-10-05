@@ -11,24 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004163355) do
+ActiveRecord::Schema.define(version: 20151004080006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "street",       limit: 100
-    t.string   "number",       limit: 10
-    t.string   "complement",   limit: 100
-    t.string   "neighborhood", limit: 100
-    t.string   "zip",          limit: 9
-    t.integer  "customer_id"
+    t.integer  "patient_id"
+    t.string   "street"
+    t.string   "number"
+    t.string   "complement"
+    t.string   "neighborhood"
+    t.string   "zip"
     t.integer  "city_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
+  add_index "addresses", ["patient_id"], name: "index_addresses_on_patient_id", using: :btree
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 100
@@ -87,6 +88,7 @@ ActiveRecord::Schema.define(version: 20151004163355) do
   add_index "states", ["country_id"], name: "index_states_on_country_id", using: :btree
 
   add_foreign_key "addresses", "cities"
+  add_foreign_key "addresses", "patients"
   add_foreign_key "cities", "states"
   add_foreign_key "patients", "health_plans"
   add_foreign_key "phones", "patients"

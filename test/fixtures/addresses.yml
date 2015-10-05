@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  patient_id: 
   street: MyString
   number: MyString
   complement: MyString
   neighborhood: MyString
   zip: MyString
-  customer: 
   city_id: 
 
 two:
+  patient_id: 
   street: MyString
   number: MyString
   complement: MyString
   neighborhood: MyString
   zip: MyString
-  customer: 
   city_id: 

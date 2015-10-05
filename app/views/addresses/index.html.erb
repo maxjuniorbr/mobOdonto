@@ -5,12 +5,12 @@
 <table>
   <thead>
     <tr>
+      <th>Patient</th>
       <th>Street</th>
       <th>Number</th>
       <th>Complement</th>
       <th>Neighborhood</th>
       <th>Zip</th>
-      <th>Customer</th>
       <th>City</th>
       <th colspan="3"></th>
     </tr>
@@ -19,12 +19,12 @@
   <tbody>
     <% @addresses.each do |address| %>
       <tr>
+        <td><%= address.patient %></td>
         <td><%= address.street %></td>
         <td><%= address.number %></td>
         <td><%= address.complement %></td>
         <td><%= address.neighborhood %></td>
         <td><%= address.zip %></td>
-        <td><%= address.customer %></td>
         <td><%= address.city %></td>
         <td><%= link_to 'Show', address %></td>
         <td><%= link_to 'Edit', edit_address_path(address) %></td>

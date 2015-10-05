@@ -28,7 +28,7 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.save
-        format.html { redirect_to patients_path, notice: t(:created_patient) }
+        format.html { redirect_to patients_path, notice: t(:register_created) }
         format.json { render :show, status: :created, location: @patient }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PatientsController < ApplicationController
   def update
     respond_to do |format|
       if @patient.update(patient_params)
-        format.html { redirect_to patients_path, notice: t(:updated_patient) }
+        format.html { redirect_to patients_path, notice: t(:register_updated) }
         format.json { render :show, status: :ok, location: @patient }
       else
         format.html { render :edit }
