@@ -1,4 +1,4 @@
-<%= form_for(@patient) do |f| %>
+<%= form_for(@patient, html: { class: 'form-horizontal' }) do |f| %>
   <% if @patient.errors.any? %>
   <div class="alert alert-danger alert-dismissible">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -11,72 +11,80 @@
   </div>
   <% end %>
   <div class="row dotted">
-    <div class="col-md-6">
+    <div class="col-sm-4">
       <%= t(:patient_details) %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <%= f.label t(:patient) %><br>
-    </div>
+
+  <div class="form-group">
     <div class="col-sm-4">
-      <%= f.text_field :patient, class: "form-control" %>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:patient) %></span>
+        <%= f.text_field :patient, class: "form-control" %>      
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <%= f.label t(:birth) %><br>
-    </div>
+
+  <div class="form-group">
     <div class="col-sm-4">
-      <%= f.text_field :birth, value: date_format(@patient.try(:birth)), class: "form-control", alt: :date %>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:birth) %></span>
+        <%= f.text_field :birth, value: date_format(@patient.try(:birth)), class: "form-control", alt: :date %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <%= f.label t(:nationality) %><br>
-    </div>
+
+  <div class="form-group">
     <div class="col-sm-4">
-      <%= f.text_field :nationality, class: "form-control" %>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:nationality) %></span>
+        <%= f.text_field :nationality, class: "form-control" %>      
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <%= f.label t(:marital_status_id) %><br>
-    </div>
+
+  <div class="form-group">
     <div class="col-sm-4">
-      <%= f.select :marital_status_id, [["Solteiro", 0], ["Casado", 1], ["Separado", 2], ["Viúvo", 3], ["Outros", 4]], { include_blank: true }, { class: "form-control" }%>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:marital_status_id) %></span>
+        <%= f.select :marital_status_id, [["Solteiro", 0], ["Casado", 1], ["Separado", 2], ["Viúvo", 3], ["Outros", 4]], { include_blank: true }, { class: "form-control" }%>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <%= f.label t(:indication_patient_id) %><br>
-    </div>
+
+  <div class="form-group">
     <div class="col-sm-4">
-      <%= f.text_field :indication_patient_id, class: "form-control" %>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:indication_patient_id) %></span>
+        <%= f.text_field :indication_patient_id, class: "form-control" %>      
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <%= f.label t(:health_plan_id) %><br>
-    </div>
+
+  <div class="form-group">
     <div class="col-sm-4">
-      <%= f.collection_select :health_plan_id, HealthPlan.all, :id, :name, { include_blank: true }, { class: "form-control" } %>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:health_plan_id) %></span>
+        <%= f.collection_select :health_plan_id, HealthPlan.all, :id, :name, { include_blank: true }, { class: "form-control" } %>      
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <%= f.label t(:email) %><br>
-    </div>
+
+  <div class="form-group">
     <div class="col-sm-4">
-      <%= f.text_field :email, class: "form-control" %>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:email) %></span>
+        <%= f.text_field :email, { class: "form-control", "aria-describedby": "basic-addon1" } %>
+      </div>
     </div>
   </div>
+
   <div class="row dotted">
     <div class="col-md-8">
       <%= t(:patient_contact) %>
     </div>
     <div class="col-sm-4 text-right">
-      <%= link_to t(:new_contact), patients_path %>
+      <%= link_to t(:new_contact), "#", { "data-toggle": "modal", "data-target": "#addressModal" } %>
     </div>
   </div>
   <div class="row">
@@ -84,10 +92,24 @@
       <%= f.submit class: "btn btn-primary" %> <%= link_to t(:back), patients_path, class: "btn btn-default" %>
     </div>
   </div>
-<% end %>
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('input[type="text"]').setMask();
-  });
-</script>
+  <!-- Modal-->
+  <div class="modal fade" id="addressModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><%= t(:new_contact) %></h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<% end %>
