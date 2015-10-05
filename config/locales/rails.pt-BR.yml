@@ -10,9 +10,18 @@ pt-BR:
   health_plan_id: Plano de Saúde
   email: E-Mail  
   patient_contact: Contatos do Paciente
+  patient_historic: Histórico do Paciente
   new_patient: Novo Paciente
+  # Address
+  street: Local
+  street_number: Número
+  complement: Complemento
+  neighborhood: Bairro
+  zip: Código Postal
+  city: Cidade
   # General
-  new_contact: Novo Contato
+  new_address: Novo Endereço
+  new_phone: Novo Telefone
   back: Voltar
   edit: Editar
   delete: Deletar
