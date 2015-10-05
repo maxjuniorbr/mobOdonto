@@ -19,6 +19,8 @@ class PatientsController < ApplicationController
 
   # GET /patients/1/edit
   def edit
+    @addresses = Address.where(:patient_id => params[:id])
+    @phones = Phone.where(:patient_id => params[:id])
   end
 
   # POST /patients
@@ -69,6 +71,6 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:patient, :birth, :nationality, :marital_status_id, :indication_patient_id, :health_plan_id, :email)
+      params.require(:patient).permit(:patient, :birth, :nationality, :marital_status_id, :indication_patient_id, :health_plan_id, :email, :adreesses_attributes)
     end
 end
