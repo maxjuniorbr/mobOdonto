@@ -55,8 +55,16 @@
       <div class="form-group">
         <div class="col-sm-4">
           <div class="input-group">
-            <span class="input-group-addon" id="basic-addon5"><%= t(:indication_patient_id) %></span>
             <%= f.text_field :indication_patient_id, class: "form-control" %>      
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-4">
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon5"><%= t(:indication_patient_id) %></span>
+            <%= text_field_tag :indication_patient_name, @indication_patient_name.blank? ? '' : @indication_patient_name, data: {autocomplete_source: patient_suggestions_path}, class: "form-control" %>      
           </div>
         </div>
       </div>
@@ -85,10 +93,8 @@
     <div class="panel-heading">
       <%= t(:patient_contact) %>    
       <div class="btn-group-xs pull-right">
-        <% if @patient.new_record? %>
           <%= link_to t(:new_address), "#", { class: "btn btn-primary", "data-toggle": "modal", "data-target": "#addressModal" } %>
           <%= link_to t(:new_phone), "#", { class: "btn btn-primary", "data-toggle": "modal", "data-target": "#addressModal" } %>
-        <% end %>
       </div>      
     </div>
 
@@ -140,14 +146,7 @@
     </div>
     <div class="panel-body">
     </div>
-  </div>
-   
-
-  <div class="row">
-    <div class="col-md-12 text-right">
-      <%= f.submit class: "btn btn-success" %> <%= link_to t(:back), patients_path, class: "btn btn-default" %>
-    </div>
-  </div>
+  </div>  
 
   <!-- Modal-->
   <div class="modal fade" id="addressModal" role="dialog">
@@ -159,67 +158,21 @@
           <h4 class="modal-title"><%= t(:new_contact) %></h4>
         </div>
         <div class="modal-body">
-        <%= f.fields_for :addresses, @patient.tags_for_form do |address| %>
-          <div class="form-group">
-            <div class="col-sm-12">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon5"><%= t(:street) %></span>
-                <%= address.text_field :street, class: "form-control" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-12">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon5"><%= t(:street_number) %></span>
-                <%= address.text_field :number, class: "form-control" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-12">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon5"><%= t(:complement) %></span>
-                <%= address.text_field :complement, class: "form-control" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-12">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon5"><%= t(:neighborhood) %></span>
-                <%= address.text_field :neighborhood, class: "form-control" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-12">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon5"><%= t(:zip) %></span>
-                <%= address.text_field :zip, class: "form-control" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-12">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon5"><%= t(:city_id) %></span>
-                <%= address.text_field :city_id, class: "form-control" %>
-              </div>
-            </div>
-          </div>
-        <% end %>
+          <%= f.fields_for :addresses do |builder| %>
+            <%= render 'new_address_fields', f: builder %>
+          <% end%>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
       
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <%= f.submit class: "btn btn-success" %> <%= link_to t(:back), patients_path, class: "btn btn-default" %>
     </div>
   </div>
 <% end %>

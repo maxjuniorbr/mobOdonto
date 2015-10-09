@@ -8,9 +8,14 @@
 </head>
 <body>
 
-<div class="col-sm-12">
+	<% unless notice.blank? %>
+    <div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <%= content_tag(:p, notice, class: 'notice') if notice.present? %>
+    </div>
+  <% end %>
+
 	<%= yield %>
-</div>
 
 </body>
 </html>

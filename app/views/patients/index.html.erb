@@ -4,14 +4,7 @@
       <%= t(:patient).pluralize %>
     </h3>
   </div>
-  <div class="panel-body">
-
-  <% unless notice.blank? %>
-  <div class="alert alert-success alert-dismissible">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <%= content_tag(:p, notice, class: 'notice') if notice.present? %>
-  </div>
-<% end %>
+  <div class="panel-body">  
 
   <table class="table table-striped">
     <thead>
@@ -35,7 +28,7 @@
           <td><%= date_format(patient.birth) %></td>
           <td><%= patient.nationality %></td>
           <td><%= marital_status[patient.marital_status_id] %></td>
-          <td><%= patient.indication_patient_id %></td>
+          <td><%= patient.indication_patient_name %></td>
           <td><%= patient.health_plan.name %></td>
           <td><%= patient.email %></td>
           <td><%= link_to t(:edit), edit_patient_path(patient) %></td>

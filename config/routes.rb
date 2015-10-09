@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   resources :addresses
   resources :health_plans
   resources :phones
-  resources :patients
+  resources :patients do
+    resources :addresses
+  end
+  resources :patient_suggestions do
+    collection do
+      get 'index'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

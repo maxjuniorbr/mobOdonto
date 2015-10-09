@@ -1,44 +1,79 @@
-<%= form_for(@address) do |f| %>
-  <% if @address.errors.any? %>
+<%= form_for(address) do |f| %>
+  <% if address.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
 
       <ul>
-      <% @address.errors.full_messages.each do |message| %>
+      <% address.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :patient_id %><br>
-    <%= f.text_field :patient_id %>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:patient_id) %></span>
+        <%= f.text_field :patient_id, class: "form-control" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :street %><br>
-    <%= f.text_field :street %>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:street) %></span>
+        <%= f.text_field :street, class: "form-control" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.text_field :number %>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:street_number) %></span>
+        <%= f.text_field :number, class: "form-control" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :complement %><br>
-    <%= f.text_field :complement %>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:complement) %></span>
+        <%= f.text_field :complement, class: "form-control" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :neighborhood %><br>
-    <%= f.text_field :neighborhood %>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:neighborhood) %></span>
+        <%= f.text_field :neighborhood, class: "form-control" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :zip %><br>
-    <%= f.text_field :zip %>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:zip) %></span>
+        <%= f.text_field :zip, class: "form-control" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :city_id %><br>
-    <%= f.text_field :city_id %>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon5"><%= t(:city_id) %></span>
+        <%= f.text_field :city_id, class: "form-control" %>
+      </div>
+    </div>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

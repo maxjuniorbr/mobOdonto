@@ -53,3 +53,6 @@ gem 'autoprefixer-rails'
 
 # Meiomask
 gem 'meiomask-rails'
+
+# jQuery
+gem 'jquery-ui-rails'
