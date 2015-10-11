@@ -11,12 +11,10 @@ class PatientsController < ApplicationController
   # GET /patients/new
   def new
     @patient = Patient.new
-    @patient.addresses.build
   end
 
   # GET /patients/1/edit
-  def edit
-    @patient.addresses.build
+  def edit    
   end
 
   # POST /patients
@@ -40,7 +38,8 @@ class PatientsController < ApplicationController
   def update
     respond_to do |format|
       if @patient.update(patient_params)
-        format.html { redirect_to patients_path, notice: t(:register_updated) }
+        #format.html { redirect_to patients_path, notice: t(:register_updated) }
+        format.html { redirect_to edit_patient_path(@patient), notice: t(:register_created) }        
         format.json { render :show, status: :ok, location: @patient }
       else
         format.html { render :edit }
@@ -65,12 +64,12 @@ class PatientsController < ApplicationController
       # Esta pesquisa foi customizada para retornar o paciente indicador
       @patient = Patient.edit_with_indication_name(params[:id])
       @indication_patient_name = @patient.indication_patient_name
-      @addresses = Address.where(:patient_id => params[:id])
-      @phones = Phone.where(:patient_id => params[:id])
+      @addresses = Address.where(patient_id: params[:id])
+      @phones = Phone.where(patient_id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:patient, :birth, :nationality, :marital_status_id, :indication_patient_id, :health_plan_id, :email, addresses_attributes: [ :id, :street, :number, :complement, :neighborhood, :zip, :city_id, :_destroy ])
+      params.require(:patient).permit(:patient, :birth, :nationality, :marital_status_id, :indication_patient_id, :health_plan_id, :email)
     end
 end

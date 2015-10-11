@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20151004080006) do
   create_table "addresses", force: :cascade do |t|
     t.integer  "patient_id"
     t.string   "street"
-    t.string   "number"
+    t.string   "street_number"
     t.string   "complement"
     t.string   "neighborhood"
     t.string   "zip"
     t.integer  "city_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree

@@ -1,0 +1,6 @@
+$("#addressModal").remove();
+$(".modal-backdrop").remove();
+$("body").prepend("<%= escape_javascript(render partial: 'edit', locals: { origin: 'patient' }) %>");
+$(".alert").remove();
+$("#addressModal").modal("show");
+$("input[type=\"text\"]").setMask();

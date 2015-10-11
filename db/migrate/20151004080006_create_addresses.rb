@@ -3,7 +3,7 @@ class CreateAddresses < ActiveRecord::Migration
     create_table :addresses do |t|
       t.references :patient, index: true, foreign_key: true
       t.string :street
-      t.string :number
+      t.string :street_number
       t.string :complement
       t.string :neighborhood
       t.string :zip

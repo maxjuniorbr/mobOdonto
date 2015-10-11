@@ -1,16 +1,10 @@
 class Patient < ActiveRecord::Base
   belongs_to :health_plan
   has_many :addresses
-  accepts_nested_attributes_for :addresses, allow_destroy: true
 
   validates :patient, presence: true
   validates :birth, presence: true
   validates :marital_status_id, presence: true
-
-  def tags_for_form
-    collection = addresses.where(patient_id: id)
-    collection.any? ? collection : addresses.build
-  end
 
   def self.terms_for(prefix)
     patients = where("upper(patient) like ?", "%#{prefix.upcase}%")

@@ -3,7 +3,7 @@
 one:
   patient_id: 
   street: MyString
-  number: MyString
+  street_number: MyString
   complement: MyString
   neighborhood: MyString
   zip: MyString
@@ -12,7 +12,7 @@ one:
 two:
   patient_id: 
   street: MyString
-  number: MyString
+  street_number: MyString
   complement: MyString
   neighborhood: MyString
   zip: MyString

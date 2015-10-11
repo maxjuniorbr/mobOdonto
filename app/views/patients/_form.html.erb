@@ -52,10 +52,10 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group hide">
         <div class="col-sm-4">
           <div class="input-group">
-            <%= f.text_field :indication_patient_id, class: "form-control" %>      
+            <%= f.hidden_field :indication_patient_id, class: "form-control" %>      
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
         <div class="col-sm-4">
           <div class="input-group">
             <span class="input-group-addon" id="basic-addon5"><%= t(:indication_patient_id) %></span>
-            <%= text_field_tag :indication_patient_name, @indication_patient_name.blank? ? '' : @indication_patient_name, data: {autocomplete_source: patient_suggestions_path}, class: "form-control" %>      
+            <%= text_field_tag :indication_patient_name, @indication_patient_name, data: {autocomplete_source: patient_suggestions_path}, class: "form-control" %>      
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
         <div class="col-sm-4">
           <div class="input-group">
             <span class="input-group-addon" id="basic-addon5"><%= t(:health_plan_id) %></span>
-            <%= f.collection_select :health_plan_id, HealthPlan.all, :id, :name, { include_blank: true }, { class: "form-control" } %>      
+            <%= f.collection_select :health_plan_id, HealthPlan.all, :id, :name, { include_blank: true }, { class: "form-control" } %>
           </div>
         </div>
       </div>
@@ -89,90 +89,74 @@
     </div>
   </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <%= t(:patient_contact) %>    
-      <div class="btn-group-xs pull-right">
-          <%= link_to t(:new_address), "#", { class: "btn btn-primary", "data-toggle": "modal", "data-target": "#addressModal" } %>
-          <%= link_to t(:new_phone), "#", { class: "btn btn-primary", "data-toggle": "modal", "data-target": "#addressModal" } %>
-      </div>      
-    </div>
-
-    <div class="panel-body">      
-      <% unless @addresses.blank? %>
-        <% @addresses.each do |address| %>
-          <div class="col-sm-2">
-            <div class="list-group">
-              <a href="#" class="list-group-item active">
-                <h4 class="list-group-item-heading">Endereço</h4>
-                <p class="list-group-item-text">
-                  <%= address.street %>
-                  <%= address.number %>
-                  <%= address.complement %>
-                  <%= address.neighborhood %>
-                  <%= address.zip %>
-                  <%= address.city.name %>
-                  <%= address.city.state.initial %>
-                </p>
-              </a>
-            </div>
-          </div>  
-        <% end %>
-      <% end %>
-
-      <% phone_type = ["Celular", "Residencial", "Contato", "Outros"] %>
-      
-      <% unless @phones.blank? %>
-        <% @phones.each do |phone| %>
-          <div class="col-sm-2">
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-success">
-                <h4 class="list-group-item-heading">Telefone <%= phone_type[phone.phone_type] %></h4>
-                <p class="list-group-item-text">
-                  <%= phone.number %>
-                  <%= phone.contact_name.blank? ? "" : "com #{phone.contact_name}" %>
-                </p>
-              </a>
-            </div>
-          </div>  
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-        <%= t(:patient_historic) %>
-    </div>
-    <div class="panel-body">
-    </div>
-  </div>  
-
-  <!-- Modal-->
-  <div class="modal fade" id="addressModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><%= t(:new_contact) %></h4>
-        </div>
-        <div class="modal-body">
-          <%= f.fields_for :addresses do |builder| %>
-            <%= render 'new_address_fields', f: builder %>
-          <% end%>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+  <% unless @patient.new_record? %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= t(:patient_contact) %>    
+        <div class="btn-group-xs pull-right">            
+            <%= link_to t(:new_address), new_address_path(patient_id: @patient.id, origin: 'patient'), { remote: true, class: "btn btn-primary", "data-toggle": "modal", "data-target": "#addressModal" } %>
+            <%= link_to t(:new_phone), "#", { class: "btn btn-primary", "data-toggle": "modal", "data-target": "#addressModal" } %>
+        </div>      
       </div>
-      
-    </div>
-  </div>
 
+      <div class="panel-body">      
+        <% unless @addresses.blank? %>
+          <% @addresses.each do |address| %>
+            <div class="col-sm-2">
+              <div class="list-group">
+                <%= link_to edit_address_path(address.id, origin: 'patient'), { remote: true, class: "list-group-item active" } do %>
+                  <h4 class="list-group-item-heading">Endereço</h4>
+                  <p class="list-group-item-text">
+                    <%= address.street %>
+                    <%= address.street_number %>
+                    <%= address.complement %>
+                    <%= address.neighborhood %>
+                    <%= address.zip %>
+                    <%= address.city.name %>
+                    <%= address.city.state.initial %>
+                  </p>
+                <% end %> 
+                </a>
+              </div>
+            </div>  
+          <% end %>
+        <% end %>
+
+        <% phone_type = ["Celular", "Residencial", "Contato", "Outros"] %>
+        
+        <% unless @phones.blank? %>
+          <% @phones.each do |phone| %>
+            <div class="col-sm-2">
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-success">
+                  <h4 class="list-group-item-heading">Telefone <%= phone_type[phone.phone_type] %></h4>
+                  <p class="list-group-item-text">
+                    <%= phone.number %>
+                    <%= phone.contact_name.blank? ? "" : "com #{phone.contact_name}" %>
+                  </p>
+                </a>
+              </div>
+            </div>  
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <%= t(:patient_historic) %>
+      </div>
+      <div class="panel-body">
+      </div>
+    </div>
+  <% end %>
+  
   <div class="row">
     <div class="col-md-12 text-right">
       <%= f.submit class: "btn btn-success" %> <%= link_to t(:back), patients_path, class: "btn btn-default" %>
     </div>
   </div>
+
 <% end %>
+
+</div>

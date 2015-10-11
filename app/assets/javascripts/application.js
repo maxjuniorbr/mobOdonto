@@ -17,3 +17,7 @@
 //= require bootstrap-sprockets
 //= require meiomask
 //= require_tree .
+
+$(document).on('ready page:load', function(event) {
+  return $("input[type=\"text\"]").setMask();
+});

@@ -1,16 +1,4 @@
-<%= form_for(address) do |f| %>
-  <% if address.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
-
-      <ul>
-      <% address.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for(@address, html: { class: 'form-horizontal' }) do |f| %>
   <div class="form-group">
     <div class="col-sm-12">
       <div class="input-group">
@@ -33,7 +21,7 @@
     <div class="col-sm-12">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon5"><%= t(:street_number) %></span>
-        <%= f.text_field :number, class: "form-control" %>
+        <%= f.text_field :street_number, class: "form-control" %>
       </div>
     </div>
   </div>
@@ -76,5 +64,6 @@
 
   <div class="actions">
     <%= f.submit %>
+    <%= link_to "Salvar", "#", id: "salvar", class: "btn btn-primary" %>
   </div>
 <% end %>
