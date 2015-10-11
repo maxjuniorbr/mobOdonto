@@ -1,6 +1,6 @@
-$("#addressModal").remove();
+$("#address-modal").remove();
 $(".modal-backdrop").remove();
-$("body").prepend("<%= escape_javascript(render partial: 'edit', locals: { origin: 'patient' }) %>");
+$("body").prepend("<%= escape_javascript(render 'edit') %>");
 $(".alert").remove();
-$("#addressModal").modal("show");
+$("#address-modal").modal("show");
 $("input[type=\"text\"]").setMask();

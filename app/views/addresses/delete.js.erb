@@ -1,0 +1,4 @@
+$("#address-modal-delete").remove();
+$(".modal-backdrop").remove();
+$("body").prepend("<%= escape_javascript(render 'delete') %>")
+$("#address-modal-delete").modal("show");

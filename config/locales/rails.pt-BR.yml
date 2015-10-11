@@ -26,11 +26,13 @@ pt-BR:
   back: Voltar
   cancel: Cancelar
   edit: Editar
-  delete: Deletar
+  delete: Apagar
   delete_confirm: Confirma a remoção do registro?
+  update: Atualizar
   register_created: Registro criado com sucesso.
   register_updated: Registro atualizado com sucesso.
   register_error: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+  confirm: Confirmo
   # Models
   activerecord:
     models:

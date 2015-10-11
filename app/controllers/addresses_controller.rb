@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-  before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_action :set_address, only: [:edit, :update, :destroy]
 
   # GET /addresses
   # GET /addresses.json
@@ -14,6 +14,10 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1/edit
   def edit
+  end
+
+  def list_address_patient
+    @addresses = Address.where(patient_id: params[:patient_id])
   end
 
   # POST /addresses
@@ -53,13 +57,19 @@ class AddressesController < ApplicationController
     end
   end
 
+  def delete
+    @address = Address.find(params[:address_id])
+  end
+
   # DELETE /addresses/1
   # DELETE /addresses/1.json
-  def destroy
+  def destroy    
     @address.destroy
-    respond_to do |format|
-      format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
-      format.json { head :no_content }
+    unless params[:origin] = 'patient'
+      respond_to do |format|
+        format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  resources :addresses
+  resources :addresses do
+    get :delete
+  end
   resources :health_plans
   resources :phones
-  resources :patients do
-    resources :addresses
-  end
+  resources :patients
   resources :patient_suggestions do
     collection do
-      get 'index'
+      get :index
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

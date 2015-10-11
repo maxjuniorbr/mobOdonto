@@ -93,20 +93,28 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <%= t(:patient_contact) %>    
-        <div class="btn-group-xs pull-right">            
-            <%= link_to t(:new_address), new_address_path(patient_id: @patient.id, origin: 'patient'), { remote: true, class: "btn btn-primary", "data-toggle": "modal", "data-target": "#addressModal" } %>
-            <%= link_to t(:new_phone), "#", { class: "btn btn-primary", "data-toggle": "modal", "data-target": "#addressModal" } %>
+        <div class="btn-group-xs pull-right">
+            <%= link_to t(:new_address), new_address_path(patient_id: @patient.id, origin: 'patient'), { remote: true, class: "btn btn-primary" } %>
+            <%= link_to t(:new_phone), "#", { class: "btn btn-primary", "data-toggle": "modal", "data-target": "#address-modal" } %>
         </div>      
       </div>
 
-      <div class="panel-body">      
+      <div class="panel-body" id="contact">
+
         <% unless @addresses.blank? %>
-          <% @addresses.each do |address| %>
+          <% @addresses.each do |address| %>            
             <div class="col-sm-2">
-              <div class="list-group">
-                <%= link_to edit_address_path(address.id, origin: 'patient'), { remote: true, class: "list-group-item active" } do %>
-                  <h4 class="list-group-item-heading">Endereço</h4>
-                  <p class="list-group-item-text">
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    <%= t(:address) %>
+                    <div class="btn-group-xs pull-right">
+                      <%= link_to t(:delete), address_delete_path(address.id, origin: "patient"), { remote: true, class: "btn btn-danger btn-xs pull-right" } %>
+                    </div>
+                  </h3>
+                </div>
+                <%= link_to edit_address_path(address.id, origin: "patient"), { remote: true, class: "patient-address-link", title: t(:update) } do %>
+                  <div class="panel-body">
                     <%= address.street %>
                     <%= address.street_number %>
                     <%= address.complement %>
@@ -114,15 +122,12 @@
                     <%= address.zip %>
                     <%= address.city.name %>
                     <%= address.city.state.initial %>
-                  </p>
+                  </div>
                 <% end %> 
-                </a>
               </div>
             </div>  
           <% end %>
         <% end %>
-
-        <% phone_type = ["Celular", "Residencial", "Contato", "Outros"] %>
         
         <% unless @phones.blank? %>
           <% @phones.each do |phone| %>
