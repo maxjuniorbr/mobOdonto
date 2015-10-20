@@ -3,7 +3,9 @@ class Patient < ActiveRecord::Base
   has_many :addresses
 
   validates :patient, presence: true
+  validates :cpf, presence: true
   validates :birth, presence: true
+  validates :nationality, presence: true
   validates :marital_status_id, presence: true
 
   def self.terms_for(prefix)
@@ -12,10 +14,10 @@ class Patient < ActiveRecord::Base
   end
 
   def self.list_with_indication_name
-    select('patients.id, patients.patient, patients.birth, patients.nationality, patients.marital_status_id, patients.indication_patient_id, p.patient indication_patient_name, patients.health_plan_id, patients.email').joins('LEFT JOIN patients p ON p.id = patients.indication_patient_id').all
+    select('patients.id, patients.patient, patients.cpf, patients.birth, patients.nationality, patients.marital_status_id, patients.indication_patient_id, p.patient indication_patient_name, patients.health_plan_id, patients.email').joins('LEFT JOIN patients p ON p.id = patients.indication_patient_id').all
   end
 
   def self.edit_with_indication_name(id)
-    select('patients.id, patients.patient, patients.birth, patients.nationality, patients.marital_status_id, patients.indication_patient_id, p.patient indication_patient_name, patients.health_plan_id, patients.email').joins('LEFT JOIN patients p ON p.id = patients.indication_patient_id').find(id)
+    select('patients.id, patients.patient, patients.cpf, patients.birth, patients.nationality, patients.marital_status_id, patients.indication_patient_id, p.patient indication_patient_name, patients.health_plan_id, patients.email').joins('LEFT JOIN patients p ON p.id = patients.indication_patient_id').find(id)
   end
 end

@@ -20,6 +20,13 @@ pt-BR:
   neighborhood: Bairro
   zip: Código Postal
   city_id: Cidade
+  # Phone
+  phones: Telefone
+  landline_phone: Residencial
+  cell_phone: Celular
+  business_phone: Comercial
+  other_phone: Recado
+  other_phone_contact: Contato
   # General
   new_address: Novo Endereço  
   new_phone: Novo Telefone
@@ -38,10 +45,12 @@ pt-BR:
     models:
       patient: Paciente
       address: Endereço
+      phone: Telefone
     attributes:
       patient: 
         patient: Paciente
         birth: Data de Nascimento
+        nationality: Nacionalidade
         marital_status_id: Estado Civil
         email: E-Mail
       address:

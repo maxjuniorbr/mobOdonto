@@ -38,8 +38,7 @@ class PatientsController < ApplicationController
   def update
     respond_to do |format|
       if @patient.update(patient_params)
-        #format.html { redirect_to patients_path, notice: t(:register_updated) }
-        format.html { redirect_to edit_patient_path(@patient), notice: t(:register_created) }        
+        format.html { redirect_to patients_path, notice: t(:register_updated) }
         format.json { render :show, status: :ok, location: @patient }
       else
         format.html { render :edit }
@@ -70,6 +69,6 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:patient, :birth, :nationality, :marital_status_id, :indication_patient_id, :health_plan_id, :email)
+      params.require(:patient).permit(:patient, :cpf, :birth, :nationality, :marital_status_id, :indication_patient_id, :health_plan_id, :email)
     end
 end

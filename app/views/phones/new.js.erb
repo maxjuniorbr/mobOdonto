@@ -1,0 +1,6 @@
+$("#phones-modal").remove();
+$(".modal-backdrop").remove();
+$("body").prepend("<%= escape_javascript(render 'new') %>")
+$(".alert").remove();
+$("#phones-modal").modal("show");
+$("input[type=\"text\"]").setMask();

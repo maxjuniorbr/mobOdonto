@@ -1,1 +1,1 @@
-json.extract! @phone, :id, :number, :contact_name, :phone_type, :customer_id, :created_at, :updated_at
+json.extract! @phone, :id, :patient_id, :landline_phone, :cell_phone, :business_phone, :other_phone, :other_phone_contact, :created_at, :updated_at

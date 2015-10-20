@@ -5,10 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th>Number</th>
-      <th>Contact name</th>
-      <th>Phone type</th>
-      <th>Customer</th>
+      <th>Patient</th>
+      <th>Landline phone</th>
+      <th>Cell phone</th>
+      <th>Business phone</th>
+      <th>Other phone</th>
+      <th>Other phone contact</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +18,12 @@
   <tbody>
     <% @phones.each do |phone| %>
       <tr>
-        <td><%= phone.number %></td>
-        <td><%= phone.contact_name %></td>
-        <td><%= phone.phone_type %></td>
-        <td><%= phone.customer %></td>
+        <td><%= phone.patient %></td>
+        <td><%= phone.landline_phone %></td>
+        <td><%= phone.cell_phone %></td>
+        <td><%= phone.business_phone %></td>
+        <td><%= phone.other_phone %></td>
+        <td><%= phone.other_phone_contact %></td>
         <td><%= link_to 'Show', phone %></td>
         <td><%= link_to 'Edit', edit_phone_path(phone) %></td>
         <td><%= link_to 'Destroy', phone, method: :delete, data: { confirm: 'Are you sure?' } %></td>

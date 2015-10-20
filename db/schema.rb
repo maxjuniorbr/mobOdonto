@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004080006) do
+ActiveRecord::Schema.define(version: 20151020092822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,17 +62,20 @@ ActiveRecord::Schema.define(version: 20151004080006) do
     t.string   "email",                 limit: 100
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.string   "cpf"
   end
 
   add_index "patients", ["health_plan_id"], name: "index_patients_on_health_plan_id", using: :btree
 
   create_table "phones", force: :cascade do |t|
-    t.string   "number"
-    t.string   "contact_name"
-    t.integer  "phone_type"
     t.integer  "patient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "landline_phone"
+    t.string   "cell_phone"
+    t.string   "business_phone"
+    t.string   "other_phone"
+    t.string   "other_phone_contact"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   add_index "phones", ["patient_id"], name: "index_phones_on_patient_id", using: :btree

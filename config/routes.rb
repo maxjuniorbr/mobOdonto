@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resources :phones
   resources :addresses do
     get :delete
   end
   resources :health_plans
-  resources :phones
   resources :patients
   resources :patient_suggestions do
     collection do
