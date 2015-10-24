@@ -39,7 +39,7 @@ pt-BR:
   register_created: Registro criado com sucesso.
   register_updated: Registro atualizado com sucesso.
   register_error: 'Por favor, verifique o(s) seguinte(s) campo(s):'
-  confirm: Confirmo
+  confirm: Confirmar
   # Models
   activerecord:
     models:
