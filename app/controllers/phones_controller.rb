@@ -53,13 +53,19 @@ class PhonesController < ApplicationController
     end
   end
 
+  def delete
+    @phone = Phone.find(params[:phone_id])
+  end
+  
   # DELETE /phones/1
   # DELETE /phones/1.json
   def destroy
     @phone.destroy
-    respond_to do |format|
-      format.html { redirect_to phones_url, notice: 'Phone was successfully destroyed.' }
-      format.json { head :no_content }
+    unless params[:origin] = 'patient'
+      respond_to do |format|
+        format.html { redirect_to phones_url, notice: 'Phone was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

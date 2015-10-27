@@ -1,0 +1,4 @@
+$("#phone-modal-delete").remove();
+$(".modal-backdrop").remove();
+$("body").prepend("<%= escape_javascript(render 'delete') %>")
+$("#phone-modal-delete").modal("show");

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :phones
+  resources :phones do
+    get :delete
+  end
   resources :addresses do
     get :delete
   end
