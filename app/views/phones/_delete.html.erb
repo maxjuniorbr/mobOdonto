@@ -10,7 +10,7 @@
         <%= t(:delete_confirm) %>
       </div>
       <div class="modal-footer">
-        <%= link_to t(:confirm), phones_path(@phones), method: :delete, remote: true, class: "btn btn-danger" %>
+        <%= link_to t(:confirm), phones_path(@phone), method: :delete, remote: true, class: "btn btn-danger" %>
         <%= link_to t(:cancel), "#", class: "btn btn-default", data: { dismiss: "modal" } %>
       </div>
     </div>
