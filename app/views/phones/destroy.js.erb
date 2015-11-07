@@ -1,14 +1,14 @@
-<% if @phones.errors.any? %>	
+<% if @phone.errors.any? %>	
 	$(".alert").remove();
 	$(".modal-body").prepend("<div class='alert alert-danger alert-dismissible'>" +
-													 "<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" +
-													 "<h4><span class='label label-danger'><%= t(:register_error) %></span></h4>" +
-													 "<ul>" +
-  <% @phones.errors.full_messages.each do |message| %>
-  												 "<li><%= message.html_safe %></li>" +
+							 "<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" +
+							 "<h4><span class='label label-danger'><%= t(:register_error) %></span></h4>" +
+							 "<ul>" +
+  <% @phone.errors.full_messages.each do |message| %>
+							 "<li><%= message.html_safe %></li>" +
   <% end %>
-  												 "</ul>" +
-													 "</div>");
+							 "</ul>" +
+							 "</div>");
 <% else %>
-	$(window.location.replace("/phones/<%= @phones.patient_id %>/edit"));
+	$(window.location.replace("/patients/<%= @phone.patient_id %>/edit"));
 <% end %>

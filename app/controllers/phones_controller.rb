@@ -20,7 +20,7 @@ class PhonesController < ApplicationController
   # POST /phones.json
   def create
     if params[:origin] = 'patient'
-      @address = Phone.create(phone_params)    
+      @phone = Phone.create(phone_params)    
     else
       @phone = Phone.new(phone_params)
       respond_to do |format|
