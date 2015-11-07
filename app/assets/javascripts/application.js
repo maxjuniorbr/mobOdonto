@@ -19,5 +19,11 @@
 //= require_tree .
 
 $(document).on('ready page:load', function(event) {
-  return $("input[type=\"text\"]").setMask();
+    return $("input[type=\"text\"]").setMask();
+});
+
+$.mask.masks = $.extend($.mask.masks, {
+    'cell-phone': {
+        mask: '(99) 99999-9999'
+    }
 });
