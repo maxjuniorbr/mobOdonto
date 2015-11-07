@@ -110,82 +110,81 @@
 		</div>
 	</div>
 	<div class="panel-body" id="contact">
-		<div class="row">
-			<% unless @addresses.blank? %>
-			<% @addresses.each do |address| %>
-			<div class="col-sm-4">
-				<div class="panel panel-success">
-					<div class="panel-heading">
-						<h3 class="panel-title"> <%= t(:address) %>
-						<div class="btn-group-xs pull-right">
-							<%= link_to t(:delete), address_delete_path(address.id, origin: "patient"), { remote: true, class: "btn btn-danger btn-xs pull-right" } %>
-						</div>
-						</h3>
-					</div>
-					<%= link_to edit_address_path(address.id, origin: "patient"), { remote: true, class: "patient-address-link", title: t(:update) } do %>
-					<div class="panel-body">
-						<%= address.street %>
-						<%= address.street_number %>
-						<%= address.complement %>
-						<%= address.neighborhood %>
-						<%= address.zip %>
-						<%= address.city.name %>
-						<%= address.city.state.initial %>
-					</div>
-					<% end %>
-				</div>
-			</div>
-			<% end %>
-			<% end %>
-			<% unless @phones.blank? %>
-			<% @phones.each do |phone| %>
-			<div class="col-sm-4">
-				<div class="panel panel-success">
-					<div class="panel-heading">
-						<h3 class="panel-title"> <%= t(:phone).pluralize %>
-						<div class="btn-group-xs pull-right">
-							<%= link_to t(:delete), phone_delete_path(phone.id, origin: "patient"), { remote: true, class: "btn btn-danger btn-xs pull-right" } %>
-						</div>
-						</h3>
-					</div>
-					<%= link_to edit_phone_path(phone.id, origin: "patient"), { remote: true, class: "patient-phone-link", title: t(:update) } do %>
-					<div class="panel-body">
-						<% unless phone.landline_phone.blank? %>
-						Residencial: <%= phone.landline_phone %>
-						<% end %>
-						<% unless phone.cell_phone.blank? %>
-						Celular: <%= phone.cell_phone %>
-						<% end %>
-						<% unless phone.business_phone.blank? %>
-						Comercial: <%= phone.business_phone %>
-						<% end %>
-						<% unless phone.other_phone.blank? %>
-						Contato: <%= phone.other_phone %>
-						<% end %>
-						<% unless phone.other_phone_contact.blank? %>
-						<%= phone.other_phone_contact %>
-						<% end %>
-					</div>
-					<% end %>
-				</div>
-			</div>
-			<% end %>
-			<% end %>
-		</div>
-		<div class="row">
-			<div class="panel panel-default">
+
+		<% unless @addresses.blank? %>
+		<% @addresses.each do |address| %>
+		<div class="col-sm-2">
+			<div class="panel panel-success">
 				<div class="panel-heading">
-					<%= t(:patient_historic) %>
+					<h3 class="panel-title"> <%= t(:address) %>
+					<div class="btn-group-xs pull-right">
+						<%= link_to t(:delete), address_delete_path(address.id, origin: "patient"), { remote: true, class: "btn btn-danger btn-xs pull-right" } %>
+					</div>
+					</h3>
 				</div>
-				<div class="panel-body"></div>
+				<%= link_to edit_address_path(address.id, origin: "patient"), { remote: true, class: "patient-address-link", title: t(:update) } do %>
+				<div class="panel-body">
+					<%= address.street %>
+					<%= address.street_number %>
+					<%= address.complement %>
+					<%= address.neighborhood %>
+					<%= address.zip %>
+					<%= address.city.name %>
+					<%= address.city.state.initial %>
+				</div>
+				<% end %>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12 text-right">
-				<%= f.submit class: "btn btn-success" %> <%= link_to t(:back), patients_path, class: "btn btn-default" %>
+		<% end %>
+		<% end %>
+		<% unless @phones.blank? %>
+		<% @phones.each do |phone| %>
+			<div class="col-sm-4">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title"> <%= t(:phone).pluralize %>
+					<div class="btn-group-xs pull-right">
+						<%= link_to t(:delete), phone_delete_path(phone.id, origin: "patient"), { remote: true, class: "btn btn-danger btn-xs pull-right" } %>
+					</div>
+					</h3>
+				</div>
+					<%= link_to edit_phone_path(phone.id, origin: "patient"), { remote: true, class: "patient-phone-link", title: t(:update) } do %>
+				<div class="panel-body">
+
+					<% unless phone.landline_phone.blank? %>
+					Residencial: <%= phone.landline_phone %>
+					<% end %>
+					<% unless phone.cell_phone.blank? %>
+					Celular: <%= phone.cell_phone %>
+					<% end %>
+					<% unless phone.business_phone.blank? %>
+					Comercial: <%= phone.business_phone %>
+					<% end %>
+					<% unless phone.other_phone.blank? %>
+					Contato: <%= phone.other_phone %>
+					<% end %>
+					<% unless phone.other_phone_contact.blank? %>
+					<%= phone.other_phone_contact %>
+					<% end %>
+					</div>
+					<% end %>
+				</div>
 			</div>
-		</div>
+
+		<% end %>
+		<% end %>
 	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<%= t(:patient_historic) %>
+	</div>
+	<div class="panel-body"></div>
+</div>
+
+<div class="col-md-12 text-right">
+	<%= f.submit class: "btn btn-success" %> <%= link_to t(:back), patients_path, class: "btn btn-default" %>
+
 </div>
 <% end %>
 <% end %>
