@@ -95,15 +95,25 @@
 	<div class="panel-heading">
 		<%= t(:patient_contact) %>
 		<div class="btn-group-xs pull-right">
-			<%= link_to t(:new_address), new_address_path(patient_id: @patient.id, origin: 'patient'), { remote: true, class: "btn btn-primary" } %>
-			<%= link_to t(:new_phone), new_phone_path(patient_id: @patient.id, origin: 'patient'), { remote: true, class: "btn btn-primary" } %>
+			<%= link_to t(:new_address), 
+				new_address_path(patient_id: @patient.id, origin: 'patient'), 
+				{ remote: true, class: "btn btn-primary" } %>
+			<% if @phones.blank? %>
+				<%= link_to t(:new_phone), 
+					new_phone_path(patient_id: @patient.id, origin: 'patient'), 
+					{ remote: true, class: "btn btn-primary" } %>
+			<% else %>
+				<%= link_to t(:new_phone),
+					 edit_phone_path(@phones[0].id, origin: "patient"),
+					 { remote: true, class: "btn btn-primary" } %>
+			<% end %>
 		</div>
 	</div>
 	<div class="panel-body" id="contact">
 		<div class="row">
 			<% unless @addresses.blank? %>
 			<% @addresses.each do |address| %>
-			<div class="col-sm-2">
+			<div class="col-sm-4">
 				<div class="panel panel-success">
 					<div class="panel-heading">
 						<h3 class="panel-title"> <%= t(:address) %>
@@ -129,7 +139,7 @@
 			<% end %>
 			<% unless @phones.blank? %>
 			<% @phones.each do |phone| %>
-			<div class="col-sm-2">
+			<div class="col-sm-4">
 				<div class="panel panel-success">
 					<div class="panel-heading">
 						<h3 class="panel-title"> <%= t(:phone).pluralize %>
@@ -138,8 +148,8 @@
 						</div>
 						</h3>
 					</div>
+					<%= link_to edit_phone_path(phone.id, origin: "patient"), { remote: true, class: "patient-phone-link", title: t(:update) } do %>
 					<div class="panel-body">
-						<%= link_to edit_phone_path(phone.id, origin: "patient"), { remote: true, class: "patient-phone-link", title: t(:update) } do %>
 						<% unless phone.landline_phone.blank? %>
 						Residencial: <%= phone.landline_phone %>
 						<% end %>
@@ -155,8 +165,8 @@
 						<% unless phone.other_phone_contact.blank? %>
 						<%= phone.other_phone_contact %>
 						<% end %>
-						<% end %>
 					</div>
+					<% end %>
 				</div>
 			</div>
 			<% end %>

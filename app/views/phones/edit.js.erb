@@ -1,6 +1,6 @@
 $("#phone-modal").remove();
 $(".modal-backdrop").remove();
-$("body").prepend("<%= escape_javascript(render 'new') %>")
+$("body").prepend("<%= escape_javascript(render 'edit') %>");
 $(".alert").remove();
 $("#phone-modal").modal("show");
 $("input[type=\"text\"]").setMask();
