@@ -1,34 +1,27 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Patient:</strong>
   <%= @phone.patient %>
 </p>
-
 <p>
   <strong>Landline phone:</strong>
   <%= @phone.landline_phone %>
 </p>
-
 <p>
   <strong>Cell phone:</strong>
   <%= @phone.cell_phone %>
 </p>
-
 <p>
   <strong>Business phone:</strong>
   <%= @phone.business_phone %>
 </p>
-
 <p>
   <strong>Other phone:</strong>
   <%= @phone.other_phone %>
 </p>
-
 <p>
   <strong>Other phone contact:</strong>
   <%= @phone.other_phone_contact %>
 </p>
-
 <%= link_to 'Edit', edit_phone_path(@phone) %> |
 <%= link_to 'Back', phones_path %>

@@ -21,7 +21,7 @@ pt-BR:
   zip: Código Postal
   city_id: Cidade
   # Phone
-  phones: Telefone
+  phone: Telefone
   landline_phone: Residencial
   cell_phone: Celular
   business_phone: Comercial

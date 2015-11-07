@@ -1,0 +1,18 @@
+<div class="modal fade" id="phone-modal-delete" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t(:delete) %></h4>
+      </div>
+      <div class="modal-body">
+        <%= t(:delete_confirm) %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to t(:confirm), phone_path(@phone), method: :delete, remote: true, class: "btn btn-danger" %>
+        <%= link_to t(:cancel), "#", class: "btn btn-default", data: { dismiss: "modal" } %>
+      </div>
+    </div>
+  </div>
+</div>
