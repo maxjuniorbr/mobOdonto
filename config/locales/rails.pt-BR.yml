@@ -12,6 +12,8 @@ pt-BR:
   patient_contact: Contatos do Paciente
   patient_historic: Histórico do Paciente
   new_patient: Novo Paciente
+  list_patient: Lista de paciente
+  edit_patient: Edição de paciente
   # Address
   address: Endereço
   street: Local
@@ -42,7 +44,6 @@ pt-BR:
   confirm: Confirmar
   register: Cadastro
   actions: Ações
-  patient_list: Lista de paciente
   # Models
   activerecord:
     models:

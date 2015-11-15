@@ -1,19 +1,20 @@
 <div class="row">
-	<div class="col-md-2 text-center">
-		<ul class="nav nav-pills nav-stacked">
-			<li class="active">
-				<%= link_to t(:new_patient), new_patient_path %>
-			</li>
-			<li>
-				<%= link_to t(:patient_list), patients_path %>
-			</li>
-		</ul>
+	<div class="col-md-2">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<ul class="nav nav-pills nav-stacked">
+					<li>
+						<%= link_to t(:list_patient).pluralize, patients_path %>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div class="col-md-10">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<span class="panel-title">
-					<%= t(:patient) %>
+					<%= t(:new_patient) %>
 				</span>
 			</div>
 			<div class="panel-body">
