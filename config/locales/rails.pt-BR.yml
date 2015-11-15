@@ -41,6 +41,8 @@ pt-BR:
   register_error: 'Por favor, verifique o(s) seguinte(s) campo(s):'
   confirm: Confirmar
   register: Cadastro
+  actions: Ações
+  patient_list: Lista de paciente
   # Models
   activerecord:
     models:
