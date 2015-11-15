@@ -1,24 +1,24 @@
 <%= form_for(@patient, html: { class: 'form-horizontal' }) do |f| %>
-<% if @patient.errors.any? %>
+<%- if @patient.errors.any? %>
 <div class="alert alert-danger alert-dismissible">
 	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 	<h4><span class="label label-danger"><%= t(:register_error) %></span></h4>
 	<ul>
-		<% @patient.errors.full_messages.each do |message| %>
+		<%- @patient.errors.full_messages.each do |message| %>
 		<li>
 			<%= message %>
 		</li>
-		<% end %>
+		<%- end %>
 	</ul>
 </div>
-<% end %>
+<%- end %>
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<%= t(:patient_details) %>
 	</div>
 	<div class="panel-body">
 		<div class="form-group">
-			<div class="col-sm-4">
+			<div class="col-md-4">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon5"><%= t(:patient) %></span>
 					<%= f.text_field :patient, class: "form-control" %>
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-4">
+			<div class="col-md-4">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon5"><%= :cpf.upcase %></span>
 					<%= f.text_field :cpf, class: "form-control", alt: :cpf %>
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-4">
+			<div class="col-md-4">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon5"><%= t(:birth) %></span>
 					<%= f.text_field :birth, value: date_format(@patient.try(:birth)), class: "form-control", alt: :date %>
@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-4">
+			<div class="col-md-4">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon5"><%= t(:nationality) %></span>
 					<%= f.text_field :nationality, class: "form-control" %>
@@ -50,7 +50,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-4">
+			<div class="col-md-4">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon5"><%= t(:marital_status_id) %></span>
 					<%= f.select :marital_status_id, [["Solteiro", 0], ["Casado", 1], ["Separado", 2], ["Viúvo", 3], ["Outros", 4]], { include_blank: true }, { class: "form-control" }%>
@@ -58,14 +58,14 @@
 			</div>
 		</div>
 		<div class="form-group hide">
-			<div class="col-sm-4">
+			<div class="col-md-4">
 				<div class="input-group">
 					<%= f.hidden_field :indication_patient_id, class: "form-control" %>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-4">
+			<div class="col-md-4">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon5"><%= t(:indication_patient_id) %></span>
 					<%= text_field_tag :indication_patient_name, @indication_patient_name, data: {autocomplete_source: patient_suggestions_path}, class: "form-control" %>
@@ -73,7 +73,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-4">
+			<div class="col-md-4">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon5"><%= t(:health_plan_id) %></span>
 					<%= f.collection_select :health_plan_id, HealthPlan.all, :id, :name, { include_blank: true }, { class: "form-control" } %>
@@ -81,7 +81,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-4">
+			<div class="col-md-4">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon5"><%= t(:email) %></span>
 					<%= f.text_field :email, class: "form-control" %>
@@ -90,7 +90,7 @@
 		</div>
 	</div>
 </div>
-<% unless @patient.new_record? %>
+<%- unless @patient.new_record? %>
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<%= t(:patient_contact) %>
@@ -98,21 +98,21 @@
 			<%= link_to t(:new_address),
 			new_address_path(patient_id: @patient.id, origin: 'patient'),
 			{ remote: true, class: "btn btn-primary" } %>
-			<% if @phones.blank? %>
+			<%- if @phones.blank? %>
 			<%= link_to t(:new_phone),
 			new_phone_path(patient_id: @patient.id, origin: 'patient'),
 			{ remote: true, class: "btn btn-primary" } %>
-			<% else %>
+			<%- else %>
 			<%= link_to t(:new_phone),
 			edit_phone_path(@phones[0].id, origin: "patient"),
 			{ remote: true, class: "btn btn-primary" } %>
-			<% end %>
+			<%- end %>
 		</div>
 	</div>
 	<div class="panel-body" id="contact">
-		<% unless @addresses.blank? %>
-		<% @addresses.each do |address| %>
-		<div class="col-sm-2">
+		<%- unless @addresses.blank? %>
+		<%- @addresses.each do |address| %>
+		<div class="col-md-2">
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<h3 class="panel-title"> <%= t(:address) %>
@@ -131,14 +131,14 @@
 					<%= address.city.name %>
 					<%= address.city.state.initial %>
 				</div>
-				<% end %>
+				<%- end %>
 			</div>
 		</div>
-		<% end %>
-		<% end %>
-		<% unless @phones.blank? %>
-		<% @phones.each do |phone| %>
-		<div class="col-sm-4">
+		<%- end %>
+		<%- end %>
+		<%- unless @phones.blank? %>
+		<%- @phones.each do |phone| %>
+		<div class="col-md-4">
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<h3 class="panel-title"> <%= t(:phone).pluralize %>
@@ -149,27 +149,27 @@
 				</div>
 				<%= link_to edit_phone_path(phone.id, origin: "patient"), { remote: true, class: "patient-phone-link", title: t(:update) } do %>
 				<div class="panel-body">
-					<% unless phone.landline_phone.blank? %>
+					<%- unless phone.landline_phone.blank? %>
 					Residencial: <%= phone.landline_phone %>
-					<% end %>
-					<% unless phone.cell_phone.blank? %>
+					<%- end %>
+					<%- unless phone.cell_phone.blank? %>
 					Celular: <%= phone.cell_phone %>
-					<% end %>
-					<% unless phone.business_phone.blank? %>
+					<%- end %>
+					<%- unless phone.business_phone.blank? %>
 					Comercial: <%= phone.business_phone %>
-					<% end %>
-					<% unless phone.other_phone.blank? %>
+					<%- end %>
+					<%- unless phone.other_phone.blank? %>
 					Contato: <%= phone.other_phone %>
-					<% end %>
-					<% unless phone.other_phone_contact.blank? %>
+					<%- end %>
+					<%- unless phone.other_phone_contact.blank? %>
 					<%= phone.other_phone_contact %>
-					<% end %>
+					<%- end %>
 				</div>
-				<% end %>
+				<%- end %>
 			</div>
 		</div>
-		<% end %>
-		<% end %>
+		<%- end %>
+		<%- end %>
 	</div>
 </div>
 <div class="panel panel-default">
@@ -178,8 +178,8 @@
 	</div>
 	<div class="panel-body"></div>
 </div>
-<% end %>
+<%- end %>
 <div class="col-md-12 text-right">
 	<%= f.submit class: "btn btn-success" %>
 </div>
-<% end %>
+<%- end %>

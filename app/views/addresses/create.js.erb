@@ -1,14 +1,14 @@
-<% if @address.errors.any? %>	
+<%- if @address.errors.any? %>	
 	$(".alert").remove();
 	$(".modal-body").prepend("<div class='alert alert-danger alert-dismissible'>" +
 							 "<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" +
 							 "<h4><span class='label label-danger'><%= t(:register_error) %></span></h4>" +
 							 "<ul>" +
-  <% @address.errors.full_messages.each do |message| %>
+  <%- @address.errors.full_messages.each do |message| %>
 							 "<li><%= message.html_safe %></li>" +
-  <% end %>
+  <%- end %>
 							 "</ul>" +
 							 "</div>");
-<% else %>
+<%- else %>
 	$(window.location.replace("/patients/<%= @address.patient_id %>/edit"));
-<% end %>
+<%- end %>

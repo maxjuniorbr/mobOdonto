@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="panel panel-default">
+  <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">
       <%= t(:patient).pluralize %>
@@ -20,8 +20,8 @@
           </tr>
         </thead>
         <tbody>
-          <% marital_status = ["Solteiro", "Casado", "Separado", "Viúvo", "Outros"] %>
-          <% @patients.each do |patient| %>
+          <%- marital_status = ["Solteiro", "Casado", "Separado", "Viúvo", "Outros"] %>
+          <%- @patients.each do |patient| %>
           <tr>
             <td><%= patient.patient %></td>
             <td><%= date_format(patient.birth) %></td>
@@ -33,12 +33,12 @@
             <td><%= link_to t(:edit), edit_patient_path(patient) %></td>
             <td><%= link_to t(:delete), patient, method: :delete, data: { confirm: t(:delete_confirm) } %></td>
           </tr>
-          <% end %>
+          <%- end %>
         </tbody>
       </table>
       <div class="row">
         <div class="col-md-12 text-right">
-          <%= link_to t(:new_patient), new_patient_path, class: "btn btn-default" %>
+          <%= link_to t(:new_patient), new_patient_path, class: "btn btn-primary" %>
         </div>
       </div>
     </div>

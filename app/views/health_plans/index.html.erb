@@ -11,14 +11,14 @@
   </thead>
 
   <tbody>
-    <% @health_plans.each do |health_plan| %>
+    <%- @health_plans.each do |health_plan| %>
       <tr>
         <td><%= health_plan.name %></td>
         <td><%= link_to 'Show', health_plan %></td>
         <td><%= link_to 'Edit', edit_health_plan_path(health_plan) %></td>
         <td><%= link_to 'Destroy', health_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <%- end %>
   </tbody>
 </table>
 
