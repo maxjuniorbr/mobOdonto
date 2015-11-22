@@ -29,6 +29,9 @@ pt-BR:
   business_phone: Comercial
   other_phone: Recado
   other_phone_contact: Contato
+  # Material
+  material: Material
+  new_material: Novo Material
   # General
   new_address: Novo Endereço  
   new_phone: Novo Telefone
