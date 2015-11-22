@@ -29,18 +29,13 @@ pt-BR:
   business_phone: Comercial
   other_phone: Recado
   other_phone_contact: Contato
-<<<<<<< Updated upstream
   # Material
   material: Material
   new_material: Novo Material
-=======
-  #Material
   material_details: Detalhes do Material
   new_material: Novo material
   edit_material: Edição de material
   list_material: Lista de material
-  material: Material
->>>>>>> Stashed changes
   # General
   new_address: Novo Endereço  
   new_phone: Novo Telefone

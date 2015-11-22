@@ -9,46 +9,26 @@
       <table class="table table-striped">
         <thead>
           <tr>
-<<<<<<< Updated upstream
-            <th>Measurement</th>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Note</th>
-            <th>Minimal</th>
-=======
             <th><%= t(:measurement) %></th>
             <th><%= t(:code) %></th>
             <th><%= t(:name) %></th>
             <th><%= t(:note) %></th>
             <th><%= t(:minimal) %></th>
->>>>>>> Stashed changes
             <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
-<<<<<<< Updated upstream
-          <% @materials.each do |material| %>
-=======
           <%- @materials.each do |material| %>
->>>>>>> Stashed changes
           <tr>
             <td><%= material.measurement %></td>
             <td><%= material.code %></td>
             <td><%= material.name %></td>
             <td><%= material.note %></td>
             <td><%= material.minimal %></td>
-<<<<<<< Updated upstream
-            <td><%= link_to 'Show', material %></td>
-            <td><%= link_to 'Edit', edit_material_path(material) %></td>
-            <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-          <% end %>
-=======
             <td><%= link_to t(:edit), edit_material_path(material) %></td>
             <td><%= link_to t(:delete), material, method: :delete, data: { confirm: t(:delete_confirm) } %></td>
           </tr>
           <%- end %>
->>>>>>> Stashed changes
         </tbody>
       </table>
       <div class="row">
@@ -57,9 +37,5 @@
         </div>
       </div>
     </div>
-<<<<<<< Updated upstream
   </div>
 </div>
-=======
-  </div>
->>>>>>> Stashed changes
