@@ -21,7 +21,7 @@
       <div class="col-md-4">
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon5"><%= t(:measurement_id) %></span>
-          <%= f.text_field :measurement_id, class: "form-control" %>
+          <%= f.collection_select :measurement_id, Measurement.all, :id, :name, { include_blank: true }, { class: "form-control" } %>
         </div>
       </div>
     </div>
