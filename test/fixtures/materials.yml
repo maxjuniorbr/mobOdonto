@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  measurement_id: 
+  code: MyString
+  name: MyString
+  note: MyText
+  minimal: 1
+
+two:
+  measurement_id: 
+  code: MyString
+  name: MyString
+  note: MyText
+  minimal: 1
