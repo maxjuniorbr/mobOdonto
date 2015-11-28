@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @phones.each do |phone| %>
+    <%- @phones.each do |phone| %>
     <tr>
       <td><%= phone.patient %></td>
       <td><%= phone.landline_phone %></td>
@@ -25,7 +25,7 @@
       <td><%= link_to 'Edit', edit_phone_path(phone) %></td>
       <td><%= link_to 'Destroy', phone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
-    <% end %>
+    <%- end %>
   </tbody>
 </table>
 <br>

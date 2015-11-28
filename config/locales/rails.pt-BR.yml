@@ -12,6 +12,8 @@ pt-BR:
   patient_contact: Contatos do Paciente
   patient_historic: Histórico do Paciente
   new_patient: Novo Paciente
+  list_patient: Lista de paciente
+  edit_patient: Edição de paciente
   # Address
   address: Endereço
   street: Local
@@ -27,6 +29,9 @@ pt-BR:
   business_phone: Comercial
   other_phone: Recado
   other_phone_contact: Contato
+  # Material
+  material: Material
+  new_material: Novo Material
   # General
   new_address: Novo Endereço  
   new_phone: Novo Telefone
@@ -40,6 +45,8 @@ pt-BR:
   register_updated: Registro atualizado com sucesso.
   register_error: 'Por favor, verifique o(s) seguinte(s) campo(s):'
   confirm: Confirmar
+  register: Cadastro
+  actions: Ações
   # Models
   activerecord:
     models:

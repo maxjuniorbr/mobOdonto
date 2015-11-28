@@ -1,6 +1,6 @@
 <%= form_for(@address, html: { class: 'form-horizontal' }) do |f| %>
   <div class="form-group">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon5"><%= t(:patient_id) %></span>
         <%= f.text_field :patient_id, class: "form-control" %>
@@ -9,7 +9,7 @@
   </div>
 
   <div class="form-group">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon5"><%= t(:street) %></span>
         <%= f.text_field :street, class: "form-control" %>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="form-group">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon5"><%= t(:street_number) %></span>
         <%= f.text_field :street_number, class: "form-control" %>
@@ -27,7 +27,7 @@
   </div>
 
   <div class="form-group">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon5"><%= t(:complement) %></span>
         <%= f.text_field :complement, class: "form-control" %>
@@ -36,7 +36,7 @@
   </div>
 
   <div class="form-group">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon5"><%= t(:neighborhood) %></span>
         <%= f.text_field :neighborhood, class: "form-control" %>
@@ -45,7 +45,7 @@
   </div>
 
   <div class="form-group">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon5"><%= t(:zip) %></span>
         <%= f.text_field :zip, class: "form-control" %>
@@ -54,7 +54,7 @@
   </div>
 
   <div class="form-group">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon5"><%= t(:city_id) %></span>
         <%= f.text_field :city_id, class: "form-control" %>
@@ -66,4 +66,4 @@
     <%= f.submit %>
     <%= link_to "Salvar", "#", id: "salvar", class: "btn btn-primary" %>
   </div>
-<% end %>
+<%- end %>

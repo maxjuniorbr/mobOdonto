@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020092822) do
+ActiveRecord::Schema.define(version: 20151004080010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,24 @@ ActiveRecord::Schema.define(version: 20151020092822) do
     t.string   "name",       limit: 100
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.integer  "measurement_id"
+    t.string   "code"
+    t.string   "name"
+    t.text     "note"
+    t.integer  "minimal"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "materials", ["measurement_id"], name: "index_materials_on_measurement_id", using: :btree
+
+  create_table "measurements", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "patients", force: :cascade do |t|
@@ -93,6 +111,7 @@ ActiveRecord::Schema.define(version: 20151020092822) do
   add_foreign_key "addresses", "cities"
   add_foreign_key "addresses", "patients"
   add_foreign_key "cities", "states"
+  add_foreign_key "materials", "measurements"
   add_foreign_key "patients", "health_plans"
   add_foreign_key "phones", "patients"
   add_foreign_key "states", "countries"

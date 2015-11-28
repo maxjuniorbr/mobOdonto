@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MobOdonto</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-	<% unless notice.blank? %>
-    <div class="alert alert-success alert-dismissible">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <%= content_tag(:p, notice, class: 'notice') if notice.present? %>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MobOdonto</title>    
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>    
+  </head>
+  <body>
+    <div class="wrapper">
+      <%- unless notice.blank? %>
+      <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <%= content_tag(:p, notice, class: 'notice') if notice.present? %>
+      </div>
+      <%- end %>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">MobOdonto</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t(:register).pluralize %> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to t(:patient), patients_path %>
+                  </li>
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <%= link_to t(:material), materials_path %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
     </div>
-  <% end %>
-
-	<%= yield %>
-
-</body>
+  </body>
 </html>

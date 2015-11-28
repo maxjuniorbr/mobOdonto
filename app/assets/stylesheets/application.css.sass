@@ -1,38 +1,44 @@
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import bootstrap-sprockets
+@import bootstrap
 
 body
-  margin: 10px
+    margin: 10px
+    padding-top: 70px
 
 ul.ui-autocomplete
-  z-index: 2
-  position: absolute
-  list-style: none
-  margin: 0
-  padding: 0
-  border: solid 1px #999
-  cursor: default
-  li
-    cursor: pointer
-    background-color: #fff
-    border-top: solid 1px #ddd
+    z-index: 2
+    position: absolute
+    list-style: none
     margin: 0
-    padding: 0 0 0 10px
+    padding: 0
+    border: solid 1px #999
+    cursor: default
+    li
+        cursor: pointer
+        background-color: #fff
+        border-top: solid 1px #ddd
+        margin: 0
+        padding: 0 0 0 10px
+        line-height: 30px
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus
-  background: #fafafa
+    background: #fafafa
 
 .ui-helper-hidden-accessible
-  display: none
+    display: none
 
 .patient-address-link:link, .patient-address:visited, .patient-address:hover, .patient-address:active
-  text-decoration: none !important
+    text-decoration: none !important
 
 .patient-address-link .panel-body:hover
-  background: #fafafa 
+    background: #fafafa
 
 .patient-phone-link:link, .patient-phone:visited, .patient-phone:hover, .patient-phone:active
-  text-decoration: none !important
+    text-decoration: none !important
 
 .patient-phone-link .panel-body:hover
-  background: #fafafa 
+    background: #fafafa
+
+.sidebar
+    background-color: #f8f8f8
+    border-color: #337ab7

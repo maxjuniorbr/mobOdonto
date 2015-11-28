@@ -9,21 +9,21 @@
       </div>
       <div class="modal-body">
         <div class="form-group hide">
-          <div class="col-sm-12">
+          <div class="col-md-12">
             <div class="input-group">
               <%= hidden_field_tag :origin, params[:origin], class: "form-control" %>
             </div>
           </div>
         </div>
         <div class="form-group hide">
-          <div class="col-sm-12">
+          <div class="col-md-12">
             <div class="input-group">
               <%= f.hidden_field :patient_id, value: params[:patient_id].blank? ? @phone.patient_id : params[:patient_id], class: "form-control" %>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-12">
+          <div class="col-md-12">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon5"><%= t(:landline_phone) %></span>
               <%= f.text_field :landline_phone, class: "form-control", alt: :phone %>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-12">
+          <div class="col-md-12">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon5"><%= t(:cell_phone) %></span>
               <%= f.text_field :cell_phone, class: "form-control", alt: "cell-phone" %>
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-12">
+          <div class="col-md-12">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon5"><%= t(:business_phone) %></span>
               <%= f.text_field :business_phone, class: "form-control", alt: :phone %>
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-12">
+          <div class="col-md-12">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon5"><%= t(:other_phone) %></span>
               <%= f.text_field :other_phone, class: "form-control", alt: :phone %>
@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-12">
+          <div class="col-md-12">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon5"><%= t(:other_phone_contact) %></span>
               <%= f.text_field :other_phone_contact, class: "form-control" %>
@@ -63,11 +63,11 @@
           </div>
         </div>
         <div class="modal-footer">
-          <%= f.submit class: "btn btn-success" %>
+          <%= f.submit class: "btn btn-primary" %>
           <%= link_to t(:cancel), "#", { class: "btn btn-default", "data-dismiss": "modal" } %>
         </div>
       </div>
     </div>
   </div>
-  <% end %>
+  <%- end %>
 </div>
